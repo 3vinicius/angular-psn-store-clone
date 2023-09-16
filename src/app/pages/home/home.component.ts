@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 		id: '',
 		name: '',
 		background_image:'',
-		plataforms: [],
+		plataforms: '',
 		ratings:[]
 	};
 
@@ -38,11 +38,21 @@ export class HomeComponent implements OnInit {
 			ratings,
 		} = game
 
+
+
+
+		let stringPlataforms:string  = parent_platforms[0].platform.name
+		for(let i = 1; i<3; i ++ ){
+			if (parent_platforms[i]) {
+				stringPlataforms += ` | ${parent_platforms[i].platform.name}`
+			}
+		}
+
 		dateGame = {
 			id,
 			name,
 			background_image,
-			plataforms: parent_platforms.map( (v:{platform:{name:string}}) => v.platform.name),
+			plataforms: stringPlataforms,
 			ratings: ratings.map((v:{title:string,percent:string}) => [v.title,v.percent])
 		}
 		return dateGame;

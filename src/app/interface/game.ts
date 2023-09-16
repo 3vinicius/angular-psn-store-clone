@@ -30,6 +30,6 @@ export interface DataGame{
 	id:string,
 		name:string,
 		background_image:string,
-		plataforms: [],
+		plataforms: string,
 		ratings:[]
 }
