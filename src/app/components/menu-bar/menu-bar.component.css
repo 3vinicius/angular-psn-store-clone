@@ -40,7 +40,6 @@
 
 .menu-bar__item > ul > li > a:hover {
 	color: blue;
-	font-weight: 600;
 }
 
 div.search {
