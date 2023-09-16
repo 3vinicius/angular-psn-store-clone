@@ -23,8 +23,8 @@ export class GameService {
 			this.key = environment.key;
 	}
 
-	getBestGames():Observable<GamesServices>{
-		this.game = this.http.get<GamesServices>(`${this.url}?key=${this.key}&page=1&page_size=6`)
+	getBestGames(name:string=''):Observable<GamesServices>{
+		this.game = this.http.get<GamesServices>(`${this.url}?key=${this.key}&page=1&page_size=6&search=${name}`)
 		return this.game;
 	}
 

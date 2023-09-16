@@ -9,7 +9,7 @@ import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { CardLabelComponent } from './components/card/card-label/card-label.component';
 import { CardPricingComponent } from './components/card/card-pricing/card-pricing.component';
 import {HttpClientModule} from '@angular/common/http'
-
+import { FormsModule } from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

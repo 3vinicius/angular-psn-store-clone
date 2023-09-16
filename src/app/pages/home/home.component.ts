@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { DataGame, Game } from 'src/app/interface/game';
 import { GameService } from 'src/app/service/game.service';
 
@@ -8,7 +8,7 @@ import { GameService } from 'src/app/service/game.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
 	games:[] | any = []
 	game: DataGame= {
 		id: '',
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 		plataforms: '',
 		ratings:[]
 	};
-
+	@Input() nameGame:string = ''
 
 
   constructor(private service:GameService) { }
@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
 
 		this.serarch();
   }
+
+	ngOnChanges(){
+		this.searchByName()
+	}
 
 	structureGame(game:Game| any):{}{
 		let dateGame = this.game
@@ -37,7 +41,6 @@ export class HomeComponent implements OnInit {
 			parent_platforms,
 			ratings,
 		} = game
-
 
 
 
@@ -59,6 +62,16 @@ export class HomeComponent implements OnInit {
 	}
 
 
+	searchByName(){
+		this.games = []
+		this.service.getBestGames(this.nameGame.split(' ').join('')).subscribe({
+			next:(result) => {
+				result.results.map(game => {
+				this.games.push(this.structureGame(game))
+				})
+		}
+		})
+	}
 
 	serarch(){
 		this.service.getBestGames().subscribe({
@@ -66,7 +79,6 @@ export class HomeComponent implements OnInit {
 					result.results.map(game => {
 					this.games.push(this.structureGame(game))
 					})
-					console.log(this.games)
 			}
 		})
 	}

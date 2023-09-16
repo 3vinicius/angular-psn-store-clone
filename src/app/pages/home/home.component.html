@@ -4,7 +4,7 @@
 		gameCover={{g.background_image}}
 		gameLabel={{g.name}}
 		[gameType]="g.plataforms"
-		gamePrice="R$ 129,99"
+		[gamePrice]="'Rating ' + g.ratings[0][1]+'%'"
 	>
 	</app-card>
 </div>
