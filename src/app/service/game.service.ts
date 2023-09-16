@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class GameService {
 	private game: GamesServices | any = '';
 	private url: string = '';
-	private key: string = '';
+	private key: string|any = '';
 
 
   constructor(private http : HttpClient) {
