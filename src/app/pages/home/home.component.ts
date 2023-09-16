@@ -43,20 +43,37 @@ export class HomeComponent implements OnInit, OnChanges {
 		} = game
 
 
+		let stringPlataforms:string  = 'none'
 
-		let stringPlataforms:string  = parent_platforms[0].platform.name
+		if(parent_platforms[0].platform.name){
+			stringPlataforms = parent_platforms[0].platform.name
 		for(let i = 1; i<3; i ++ ){
 			if (parent_platforms[i]) {
 				stringPlataforms += ` | ${parent_platforms[i].platform.name}`
 			}
 		}
+		}
+
+
+
+
+
+
+
+		let myRatings:any = []
+		if(ratings.length > 0){
+			myRatings = ratings
+		} else {
+			myRatings = [['','none']]
+		}
+
 
 		dateGame = {
 			id,
 			name,
 			background_image,
 			plataforms: stringPlataforms,
-			ratings: ratings.map((v:{title:string,percent:string}) => [v.title,v.percent])
+			ratings: myRatings.map((v:{title:string,percent:string}) => [v.title,v.percent])
 		}
 		return dateGame;
 	}
@@ -64,13 +81,15 @@ export class HomeComponent implements OnInit, OnChanges {
 
 	searchByName(){
 		this.games = []
-		this.service.getBestGames(this.nameGame.split(' ').join('')).subscribe({
+		this.service.getBestGames(this.nameGame).subscribe({
 			next:(result) => {
 				result.results.map(game => {
+
 				this.games.push(this.structureGame(game))
 				})
 		}
 		})
+
 	}
 
 	serarch(){
