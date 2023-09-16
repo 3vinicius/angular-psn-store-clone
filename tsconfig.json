@@ -23,6 +23,7 @@
       "dom"
     ]
   },
+	"type":["node"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
