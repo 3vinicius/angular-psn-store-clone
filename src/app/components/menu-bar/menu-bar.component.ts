@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'app-menu-bar',
   templateUrl: './menu-bar.component.html',
@@ -10,6 +11,7 @@ export class MenuBarComponent implements OnInit {
   constructor() { }
 
 	@Output() nameForSearch = new EventEmitter();
+
 
   ngOnInit(): void {
   }
