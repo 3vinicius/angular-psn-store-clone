@@ -1,27 +1,33 @@
 # Store
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+# Projeto de Exemplo com Angular e Netlify
 
-## Development server
+Este é um projeto de exemplo que demonstra as seguintes implementações:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Integração com a API RAWG 🎮
+- Utilização dos módulos HttpClientModule e FormsModule do Angular 📡
+- Criação de um campo de busca e um botão para buscar jogos por nome 🔍
+- Redirecionamento para a página de um jogo na Steam ao clicar no jogo 🚀
+- Deploy automatizado no [Netlify](https://storeplay.netlify.app) 🌐
 
-## Code scaffolding
+## Integração com a API RAWG
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Neste projeto, realizamos a integração com a API RAWG para obter informações sobre jogos, como título, descrição, classificação e muito mais. Utilizamos a biblioteca HttpClient do Angular para fazer requisições HTTP para a API e exibir os dados em nosso site.
 
-## Build
+## Utilização dos Módulos HttpClientModule e FormsModule
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Utilizamos os módulos HttpClientModule e FormsModule do Angular para facilitar o processo de busca por jogos. O HttpClientModule permite fazer requisições HTTP para a API RAWG, enquanto o FormsModule é usado para criar um campo de busca interativo.
 
-## Running unit tests
+```typescript
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  imports: [
+    HttpClientModule,
+    FormsModule
+  ],
+  // ...
+})
+export class AppModule { }
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
